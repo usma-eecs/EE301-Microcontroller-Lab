@@ -1,0 +1,94 @@
+Here's the work flow:
+
+I'm gonna show you what the current EE301 microcontroller lab is like (two powerpoints), and we are going to remake them. The format will be based on the main.tex file attached, but we'll replace all the actual content with the new lab we are making. The new lab should follow the workflow
+
+
+
+0) Download and install Visual Studio Code on their individual laptops. Let the installation run in the background while complete the next step.
+
+1) Instruct students to solder the male header onto the PCB (see https://usma-eecs.github.io/CY105_Lab/Initial_Steps.html, "Assembly"). Include necessary tips as well as required equipment (eye protection, ventilating fan, soldering iron set to 750F, solder, with a mild warning that solder contains lead and they must use a pair of pliers to hold up the solder or wash their hands afterwards). Include instructional graphics as appropriate. Note that the soldering should happen on the "Beat Navy!" side of the PCB. Include examples of good and bad solder joints from the link above.
+
+2) Once the soldering is complete and satisfactory, install the adafruit circuit playground Bluefruit onto the PCB using nuts and bolts. Note that they need a screwdriver, and a pair of pliers to make sure the bolts are tightened (but not overly so). Should be snug with no play. Note to them that the bluefruit should be installed on the "Beat Navy!" side as well.
+
+3) Once complete, power on the Bluefruit by plugging it into their laptops using the male-male USB-A/micro USB-B cable. 
+
+4) Download the "Bluefruit Reflash Kit v2026.3" from Canvas, and decompress the zip file. 
+
+5) Double click the small reset button in the center of bluefruit to put it into bootloader mode. All LEDs, known as neopixels, should be green.
+
+6) Run the "autoflash" file and follow its instructions. (File attached. We'll talk about updating it in a sec, but plan to include what the prompts should be like.) Neopixels should turn to all red while bootloader is running.
+
+===
+[INFO] Using serial port: COM4
+[INFO] Flashing bootloader on COM4...
+Upgrading target on COM4 with DFU package C:\Users\arthur.chu\OneDrive - West Point\EE301\26-2\Labs\Microcontroller Lab I\Bluefruit Reflash Kit\circuitplayground_nrf52840_bootloader-0.10.0_s140_6.1.1.zip. Flow control is disabled, Single bank, Touch 1200
+Touched serial port COM4
+Opened serial port COM4
+Starting DFU upgrade of type 3, SoftDevice size: 151016, bootloader size: 39000, application size: 0
+Sending DFU start packet
+Sending DFU init packet
+Sending firmware file
+########################################
+########################################
+########################################
+########################################
+########################################
+########################################
+########################################
+########################################
+########################################
+############
+Activating new firmware
+
+DFU upgrade took 21.17484402656555s
+Device programmed.
+[INFO] Waiting for CPLAYBTBOOT drive...
+[INFO] Copying UF2 to D:...
+[OK] UF2 copied. Waiting for remount...
+[INFO] Waiting for CIRCUITPY to remount...
+[WARNING] Single-tap RESET if CIRCUITPY is not appearing in File Explorer.
+[WARNING] Single-tap RESET if CIRCUITPY is not appearing in File Explorer.
+[WARNING] Single-tap RESET if CIRCUITPY is not appearing in File Explorer.
+[WARNING] Single-tap RESET if CIRCUITPY is not appearing in File Explorer.
+[INFO] Drive D: ready. Installing diagnostics...
+===
+7) Use the bottons and the switch to make sure basic functionality of their Bluefruit is working properly. Put the slide switch to the ON (left) position, and press either button. Put the switch to the OFF (right) position to discontinue its current programming.
+
+8) Navigate to the extension button (show what it looks like) and install https://marketplace.visualstudio.com/items?itemName=wmerkens.vscode-circuitpython-v2 and https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-serial-monitor.
+
+9) (Removed)
+
+10) In Visual Studio Code, File/Open Folder and select CIRCUITPY (D:). Open "code.py". Insert big caution message here saying that any code that's not in this file will not be run by Bluefruit. To make bluefruit rerun the existing code, simply select File/Save or press Ctrl+S. Open Terminal/New Terminal/SERIAL MONITOR/Start Monitoring to see any textual output coming from Bluefruit.
+
+11) Include another short code snippet on how the temperature sensor works and how to pull its value (again, short snippet and breakdown descriptions).
+
+12) Instruct cadets to write run the program to print out current temperature once a second.
+
+13) Include a short code snippet on how to program the neopixels (see https://usma-eecs.github.io/CY105_Lab/Exploration.html) and other sensors/inputs/outputs. Use neopixel as an example and break down what each line does with arrows and boxes.
+
+14) Instruct cadets to feed the two code pieces into GenAI and ask it to create a program that will change the color of the lights based on current temperature. 0F = Blue (#0000FF) and 100F = Red (#FF0000). Make sure the code works. 
+
+15) Connect the microsd module to the circuit board using jumper wires. (Figure out better pin assignments than the one in the slides so it would to the max extent possible deconflict with other devices using UART/I2C/SPI protocols).
+
+16) Show a code snippet that would write a single line of "hello world" into a file. Instruct cadets to run that code, and examine the completed txt file in Visual Studio Code.
+
+17) Instruct cadets to feed all three files to GenAI, and ask it to generate a code file that would write current temperature, once a second, to the txt file.
+
+18) Give out final project instruction: must use two sensors. Thermometer can be one. List out the sensors we have:
+
+The ones on Circuit Playground Bluefruit
+
+External sensors available for loan
+Adafruit 746 Ultimate GPS Breakout
+Adafruit 4162 VEML7700 Lux Sensor
+Adafruit LSM303AGR Accelerometer and Compass
+Adafruit SHT30 Humidity and Temperature Sensor
+Ohmite FSR01 Force Sensing Resistor
+Parallax 555-28027 Passive IR Sensor
+Parallax 27800 2-Axis Joystick
+Parallax 28015 PING))) Ultrasonic Distance Sensor
+Parallax 28041 LaserPING Rangefinder
+
+Attach demo code as appendix for each available external sensor (attached as Sensors.zip)
+
+19) Remind cadets they must turn in all loaned equipment prior to TEE.
