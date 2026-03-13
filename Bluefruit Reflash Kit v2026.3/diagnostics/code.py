@@ -8,7 +8,7 @@ import time
 import math, random
 
 def freq_to_rgb(freq):
-    wavelength = (freq*2-500)/1500 * 400 + 380
+    wavelength = (freq-500)/1500 * 400 + 380
     return wavelength_to_rgb(wavelength)
 
 def wavelength_to_rgb(wavelength):
@@ -154,7 +154,7 @@ def main():
                 offset += 1
                 time.sleep(float(parts[1]) * 60/pace)
             else:
-                freq = octave[parts[0]] * (2 ** int(parts[1]))
+                freq = octave[parts[0]] * (2 ** (int(parts[1]) + 1))
                 rgb = freq_to_rgb(freq)
                 ledidx = (i-offset)%10
                 led[ledidx] = rgb
